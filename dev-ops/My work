@@ -1,0 +1,48 @@
+
+
+ Jenkins CI/CD - Gitlab and server.
+		       - Deploy apps or code from gitlab to server.
+			   - Copy services from one apps to all apps inside gitlab using Jenkins
+			   - Using webhooks in gitlab , Update all projects in gitlab using Jenkins if any services is updated then changes are 
+			     reflected in all services present in all projects.
+
+ Docker - Created Image of simple flask app and pushed it into my docker repository.
+        - Mount volumes which are in local machine into container usig docker volume to make changes in config file during running the docker image.
+	    - dockerization of services and configure ui so that it can hit services and can connect to all DBs using nginx and docker volume.
+		   
+ Kubernetes - Created kubadm kubernetes cluster and deploy my flask app from my docker hub repository and httpd.
+                
+
+ Shell-Script utilities - Developed script for servers which sent mails when disk space or inode or both exceeds the threshold. 
+						- Automated using crontab.
+						- Developed script for server which sent mails if any service is down.Automated using crontab.
+						- Worked on making service as system services.
+						- use virtual machine for testing.
+						- use optargs for developing product to handle arguments and versions of product and so on.
+ Nginx - Served static website, proxy pass and load balancing.
+
+ Security Monkey - configured this tool used by netflix to monitor aws account.
+ 
+ cockpit - 
+ 
+ Nebula - To deploy app into device remotely .
+
+ data-bases - worked on RDBMS like oracle and mongodb, kairosDB, cassandra, postgresql, elasticsearchDB
+
+ Python - Created library management app with database connectivity - used flask app and postman for updation in data base. 
+		- triggers when no of files or directory exceeds threshold and sent mail.
+		- automation of sites for which data is not uploaded.
+		- used requests, base64,json, pandas, smtblib,MIMEText MIMEMultipart MIMEBase encoders subprocess os, configparser, flask, selenium.
+		  
+ AWS automation using boto3 and cloudformation - automated launching instances with attach ebs volume and registered ami image
+												 from snapshot of root volume and terminated this instance after that using that ami and 
+												 other details aboutprevious instance created a json file and pushed it into s3 
+												 then read this file from s3 and launched this instance.
+ 
+ Ansible - To automate some installation task
+												
+		  
+
+						  
+						  
+			

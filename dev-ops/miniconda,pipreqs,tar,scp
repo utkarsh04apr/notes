@@ -1,0 +1,29 @@
+1) Miniconda
+
+wget link.sh
+sh Miniconda-.sh
+yes
+path - /home/<user-name>/miniconda3
+yes
+source /home/<user-name>/miniconda3/bin/activate
+conda create --name <environment-name> python=<version-number>
+conda activate <environment-name>
+
+2) pip and requirement.txt
+ sudo apt-get -y install python3-pip
+  329  pip3 install pipreqs
+  330  ls
+  331  cd /opt/critical-site-monitoring/
+  332  ls
+  333  cd critical_site_monitoring/
+  334  ls
+  335  cd ..
+  336  ls
+  337  pipreqs critical_site_monitoring/
+  338  sudo pipreqs critical_site_monitoring/
+  339  pipreqs critical_site_monitoring/
+  
+3) tar and scp command
+  sudo tar czvf critical-site-monitoring.tar.gz critical-site-monitoring/
+  sudo scp critical-site-monitoring.tar.gz utkarsh@192.168.56.10:/tmp
+  

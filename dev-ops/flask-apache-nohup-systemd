@@ -1,0 +1,62 @@
+flask app, apche web server or httpd in centos-7, nohup, system-service
+
+1) flask app
+
+[admin@localhost ~]$ cat /opt/flask/hello.py 
+from flask import Flask
+app = Flask(__name__)
+
+@app.route("/")
+def hello():
+    return "Hello World!"
+
+if __name__ == "__main__":
+    app.run()
+[admin@localhost ~]$ python /opt/flask/hello.py
+     - It will run on 127.0.0.1:5000 
+2)Configuring virtual host and proxy pass
+   a) Install apache 
+   b) create folder like
+        mkdir -p /var/www/domain.com
+   c) Give ownership and permission and create simple html file in index.html which is in var/www/domain/ folder.
+   d) Go to /etc/httpd/conf.d folder and create test.conf file and paste this 
+       <VirtualHost *:80>
+    ServerName localhost
+    ServerAlias localhost
+    DocumentRoot /var/www/domain.com/
+    ProxyPreserveHost On
+    ProxyPass /test http://127.0.0.1:5000/
+    ProxyPassReverse / http://127.0.0.1:5000/
+    ErrorLog /etc/httpd/logs/error.log
+    CustomLog /etc/httpd/logs/requests.log combined
+      </VirtualHost>
+	e) restart apache.
+3) To run flask at background
+     $ sudo nohup python hello.py > nohup.out &
+   If it is throwing error then kill pid
+     $ netstat -nlpt | grep 5000
+	 $ kill -9 pid
+	 
+   And again run command again
+     $ sudo nohup python hello.py > nohup.out &
+4) System service
+   Go to /etc/systemd/system and create flask-hello-app.service and paste this
+   [root@localhost admin]# cd /etc/systemd/system/
+[root@localhost system]# cat flask-hello-app.service 
+[Unit]
+Description=simple flask app
+
+[Service]
+User=admin
+Type=simple
+WorkingDirectory=/opt/flask/
+ExecStart=/usr/bin/python hello.py 
+Restart=on-failure
+# RestartSec=1
+
+[Install]
+WantedBy=multi-user.target
+# systemctl daemon-reload
+# systemctl restart flask-hello-app.service
+and now flask is running
+
